@@ -12,7 +12,4 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to('Move/Air')
 
 func enter(msg: = {}) -> void:
-	playback.travel("idle")
-
-func exit() -> void:
-	_parent.exit()
+	animation_player.play("idle")

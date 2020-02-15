@@ -8,14 +8,13 @@ const JUMP_HEIGHT := 40
 const DISTANCE_TO_PEAK := 70
 const DISTANCE_AFTER_PEAK := 40
 
-var time_since_jump := 0
 var move_dir := 0
 var gravity := 0
 var velocity = Vector2.ZERO
 
-
-func enter(msg: = {}) -> void:
-	playback.start("run")
+func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		_state_machine.transition_to("Move/Shoot")
 
 func physics_process(delta: float) -> void:
 	_update_horizontal_velocity(delta)
@@ -47,18 +46,15 @@ func _update_vertical_velocity(delta):
 	if player.is_on_ceiling():
 		velocity.y = -0.1
 	
-	var jump_speed = -2 * JUMP_HEIGHT * MAX_HORIZONTAL_SPEED / DISTANCE_TO_PEAK
-	var jump_section_distance = DISTANCE_TO_PEAK if velocity.y < -0.1 else DISTANCE_AFTER_PEAK
-	gravity = 2 * JUMP_HEIGHT * pow(MAX_HORIZONTAL_SPEED, 2) / pow(jump_section_distance, 2)
-	
-	var on_ground = player.is_on_floor()
-	if on_ground and Input.is_action_just_pressed("jump"):
+	if player.is_on_floor() and Input.is_action_just_pressed("jump"):
+		var jump_speed = -2 * JUMP_HEIGHT * MAX_HORIZONTAL_SPEED / DISTANCE_TO_PEAK
 		velocity.y = jump_speed
 	elif not player.is_on_floor():
+		var jump_section_distance = DISTANCE_TO_PEAK if velocity.y < -0.1 else DISTANCE_AFTER_PEAK
+		gravity = 2 * JUMP_HEIGHT * pow(MAX_HORIZONTAL_SPEED, 2) / pow(jump_section_distance, 2)
 		velocity.y += gravity * delta
-		time_since_jump += delta
 	else:
-		velocity.y = 10
+		velocity.y = 5
 		
 	velocity.y = min(velocity.y, MAX_FALLING_SPEED)
 

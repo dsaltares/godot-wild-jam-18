@@ -13,6 +13,6 @@ func physics_process(delta: float) -> void:
 		_state_machine.transition_to('Move/Air')
 
 func enter(msg: = {}) -> void:
-	playback.travel('')
+	animation_player.play("run")
 	_parent.enter(msg)
 

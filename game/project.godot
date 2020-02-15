@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Run.gd"
 }, {
+"base": "PlayerState",
+"class": "Shoot",
+"language": "GDScript",
+"path": "res://Player/Shoot.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -56,6 +61,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerState": "",
 "Run": "",
+"Shoot": "",
 "State": "res://StateMachine/state.svg",
 "StateMachine": "res://StateMachine/state_machine.svg"
 }

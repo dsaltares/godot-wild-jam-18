@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=5]
 [ext_resource path="res://Player/Run.gd" type="Script" id=6]
 [ext_resource path="res://Player/Air.gd" type="Script" id=7]
+[ext_resource path="res://Player/Shoot.gd" type="Script" id=8]
+[ext_resource path="res://Player/ActionIdle.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.09967, 10.9729 )
@@ -143,86 +145,6 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62, 63 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "attack"
-
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "dash"
-
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "idle"
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "jump"
-
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "jump_air"
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "run"
-
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "shoot"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
-
-[sub_resource type="AnimationNodeStateMachine" id=32]
-states/attack/node = SubResource( 10 )
-states/attack/position = Vector2( -60.1484, 118.99 )
-states/dash/node = SubResource( 11 )
-states/dash/position = Vector2( 643.852, 118.99 )
-states/idle/node = SubResource( 12 )
-states/idle/position = Vector2( 155, 50 )
-states/jump/node = SubResource( 13 )
-states/jump/position = Vector2( 293, 150 )
-states/jump_air/node = SubResource( 14 )
-states/jump_air/position = Vector2( 293, 249 )
-states/run/node = SubResource( 15 )
-states/run/position = Vector2( 431, 50 )
-states/shoot/node = SubResource( 16 )
-states/shoot/position = Vector2( 37.8516, 230.99 )
-transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "jump", SubResource( 19 ), "run", "jump", SubResource( 20 ), "jump", "jump_air", SubResource( 21 ), "jump_air", "idle", SubResource( 22 ), "jump_air", "run", SubResource( 23 ), "idle", "attack", SubResource( 24 ), "attack", "idle", SubResource( 25 ), "idle", "shoot", SubResource( 26 ), "shoot", "idle", SubResource( 27 ), "run", "dash", SubResource( 28 ), "dash", "run", SubResource( 29 ), "idle", "jump_air", SubResource( 30 ), "run", "jump_air", SubResource( 31 ) ]
-start_node = "idle"
-graph_offset = Vector2( -284.148, 2.99001 )
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -234,7 +156,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 50
+frame = 48
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
@@ -246,26 +168,28 @@ anims/jump_air = SubResource( 7 )
 anims/run = SubResource( 8 )
 anims/shoot = SubResource( 9 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 32 )
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 33 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
-
-[node name="StateMachine" type="Node" parent="."]
+[node name="ActionFSM" type="Node" parent="."]
 script = ExtResource( 5 )
-initial_state = NodePath("Move/Idle")
+initial_state = NodePath("Idle")
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="ActionFSM"]
+script = ExtResource( 9 )
+
+[node name="MovementFSM" type="Node" parent="."]
+script = ExtResource( 5 )
+initial_state = NodePath("../MovementFSM/Move/Idle")
+
+[node name="Move" type="Node" parent="MovementFSM"]
 script = ExtResource( 4 )
 
-[node name="Idle" type="Node" parent="StateMachine/Move"]
+[node name="Idle" type="Node" parent="MovementFSM/Move"]
 script = ExtResource( 3 )
 
-[node name="Run" type="Node" parent="StateMachine/Move"]
+[node name="Run" type="Node" parent="MovementFSM/Move"]
 script = ExtResource( 6 )
 
-[node name="Air" type="Node" parent="StateMachine/Move"]
+[node name="Air" type="Node" parent="MovementFSM/Move"]
 script = ExtResource( 7 )
+
+[node name="Shoot" type="Node" parent="MovementFSM/Move"]
+script = ExtResource( 8 )
