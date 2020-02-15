@@ -2,11 +2,13 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'game/**'
 
 jobs:
   export_game:
     runs-on: ubuntu-latest
-    name: Export Game
+    name: Export game
     steps:
     - name: checkout
       uses: actions/checkout@v2.0.0
