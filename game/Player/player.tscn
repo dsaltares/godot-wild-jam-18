@@ -169,7 +169,7 @@ anims/shoot = SubResource( 9 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 5 )
-initial_state = NodePath("../MovementFSM/Move/Idle")
+initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
