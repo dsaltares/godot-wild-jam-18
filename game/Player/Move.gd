@@ -15,6 +15,8 @@ var velocity = Vector2.ZERO
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		_state_machine.transition_to("Move/Shoot")
+	if event.is_action_pressed("attack"):
+		_state_machine.transition_to("Move/Attack")
 
 func physics_process(delta: float) -> void:
 	_update_horizontal_velocity(delta)

@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Player/Air.gd"
 }, {
 "base": "PlayerState",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://Player/Attack.gd"
+}, {
+"base": "PlayerState",
 "class": "Idle",
 "language": "GDScript",
 "path": "res://Player/Idle.gd"
@@ -56,6 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Air": "",
+"Attack": "",
 "Idle": "",
 "Move": "",
 "Player": "",

@@ -1,7 +1,7 @@
 extends State
 class_name PlayerState
 
-var player: Node
+var player: KinematicBody2D
 var sprite: Sprite
 var animation_player: AnimationPlayer
 

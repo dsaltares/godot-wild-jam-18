@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,12 +8,13 @@
 [ext_resource path="res://Player/Run.gd" type="Script" id=6]
 [ext_resource path="res://Player/Air.gd" type="Script" id=7]
 [ext_resource path="res://Player/Shoot.gd" type="Script" id=8]
+[ext_resource path="res://Player/Attack.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.09967, 10.9729 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "attack"
+resource_name = "attack_run"
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -26,7 +27,24 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 71 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "attack_run"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 64, 65, 66, 67, 68, 69, 70, 71 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -144,6 +162,23 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62, 63 ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "shoot_run"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 74, 75, 76, 77, 78, 79 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -153,12 +188,14 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 8
+vframes = 10
 hframes = 8
-frame = 48
+frame = 71
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 2
 anims/attack = SubResource( 2 )
+anims/attack_run = SubResource( 11 )
 anims/dash = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/interact = SubResource( 5 )
@@ -166,6 +203,7 @@ anims/jump = SubResource( 6 )
 anims/jump_air = SubResource( 7 )
 anims/run = SubResource( 8 )
 anims/shoot = SubResource( 9 )
+anims/shoot_run = SubResource( 10 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -185,3 +223,6 @@ script = ExtResource( 7 )
 
 [node name="Shoot" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 8 )
+
+[node name="Attack" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 9 )
