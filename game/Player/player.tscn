@@ -42,7 +42,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 resource_name = "attack_run"
 length = 0.4
 step = 0.05
@@ -71,10 +71,8 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "dash"
-length = 0.24
-step = 0.03
+[sub_resource type="Animation" id=4]
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot/Sprite:frame")
 tracks/0/interp = 1
@@ -82,13 +80,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -104,8 +102,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "interact"
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot/Sprite:frame")
@@ -120,8 +117,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "jump"
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot/Sprite:frame")
@@ -136,8 +132,7 @@ tracks/0/keys = {
 "values": [ 34, 39, 36, 37, 38 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "jump_air"
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -153,7 +148,7 @@ tracks/0/keys = {
 "values": [ 40, 41, 42, 43, 44, 45, 46, 47 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.56
 loop = true
 step = 0.07
@@ -170,8 +165,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51, 52, 53, 54, 55 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "shoot"
+[sub_resource type="Animation" id=10]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -201,8 +195,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "shoot_run"
+[sub_resource type="Animation" id=11]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -233,7 +226,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 10, 12 )
+extents = Vector2( 7, 12 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -247,15 +240,15 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 2
 anims/attack = SubResource( 2 )
-anims/attack_run = SubResource( 11 )
-anims/dash = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/interact = SubResource( 5 )
-anims/jump = SubResource( 6 )
-anims/jump_air = SubResource( 7 )
-anims/run = SubResource( 8 )
-anims/shoot = SubResource( 9 )
-anims/shoot_run = SubResource( 10 )
+anims/attack_run = SubResource( 3 )
+anims/dash = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/interact = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/jump_air = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/shoot = SubResource( 10 )
+anims/shoot_run = SubResource( 11 )
 
 [node name="Pivot" type="Position2D" parent="."]
 
