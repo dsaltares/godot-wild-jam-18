@@ -79,7 +79,6 @@ func _update_player_detection() -> void:
 	
 	var detects_player = player_raycast.is_colliding()
 	var can_attack = attack_cooldown.time_left == 0
-	print(attack_cooldown.time_left)
 	if detects_player and can_attack:
 		state = State.Attack
 		animation_player.play("attack")
