@@ -27,7 +27,7 @@ current = true
 zoom = Vector2( 0.3, 0.3 )
 
 [node name="Darklord" parent="." instance=ExtResource( 5 )]
-position = Vector2( 168, 112 )
+position = Vector2( 288, 112 )
 
 [node name="Alien" parent="." instance=ExtResource( 4 )]
-position = Vector2( 344, 176 )
+position = Vector2( 168, 112 )

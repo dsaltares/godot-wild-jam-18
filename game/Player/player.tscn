@@ -257,7 +257,7 @@ anims/shoot_run = SubResource( 11 )
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 8
-frame = 8
+frame = 12
 
 [node name="BulletSpawner" type="Position2D" parent="Pivot"]
 position = Vector2( 9, -1 )

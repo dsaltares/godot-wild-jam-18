@@ -1,4 +1,6 @@
 extends KinematicBody2D
+class_name Alien
+
 
 enum State {
 	Walk,
@@ -18,6 +20,8 @@ onready var wall_ahead_raycast := $Pivot/WallAheadRayCast
 onready var wall_behind_raycast := $Pivot/WallBehindRayCast
 onready var player_raycast := $Pivot/PlayerRayCast
 onready var attack_cooldown := $AttackCooldown
+
+export var dash_enabled := false
 
 var state = State.Walk
 var direction := -1
@@ -59,7 +63,10 @@ func _update_vertical_velocity(delta: float) -> void:
 		velocity.y += GRAVITY * delta
 		
 func _update_horizontal_velocity(delta: float) -> void:
-	var can_move = state != State.Die and not is_on_wall()
+	var moving = state == State.Walk
+	var space_ahead = not is_on_wall()
+	var attack_dash = dash_enabled and State.Attack
+	var can_move = (moving or attack_dash) and space_ahead
 	if can_move:
 		var horizontal_speed = ATTACK_DASH_SPEED if state == State.Attack else WALK_SPEED
 		velocity.x = horizontal_speed * direction
@@ -72,6 +79,7 @@ func _update_player_detection() -> void:
 	
 	var detects_player = player_raycast.is_colliding()
 	var can_attack = attack_cooldown.time_left == 0
+	print(attack_cooldown.time_left)
 	if detects_player and can_attack:
 		state = State.Attack
 		animation_player.play("attack")
