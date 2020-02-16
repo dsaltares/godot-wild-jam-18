@@ -4,7 +4,7 @@ class_name Move
 const MAX_HORIZONTAL_SPEED := 150
 const MAX_FALLING_SPEED := 500
 const TIME_TO_MAX_SPEED := 0.1
-const JUMP_HEIGHT := 40
+const JUMP_HEIGHT := 50
 const DISTANCE_TO_PEAK := 70
 const DISTANCE_AFTER_PEAK := 40
 
