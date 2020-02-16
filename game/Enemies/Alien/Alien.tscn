@@ -64,10 +64,29 @@ collision_layer = 8
 collision_mask = 39
 script = ExtResource( 2 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7 )
+shape = SubResource( 1 )
+
 [node name="Pivot" type="Position2D" parent="."]
 
-[node name="FloorRayCast" type="RayCast2D" parent="Pivot"]
+[node name="FloorAheadRayCast" type="RayCast2D" parent="Pivot"]
 position = Vector2( 13, -3 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="WallAheadRayCast" type="RayCast2D" parent="Pivot"]
+position = Vector2( 13, -3 )
+enabled = true
+cast_to = Vector2( 5, 0 )
+
+[node name="WallBehindRayCast" type="RayCast2D" parent="Pivot"]
+position = Vector2( -13, -3 )
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="FloorBehindRayCast" type="RayCast2D" parent="Pivot"]
+position = Vector2( -30, -3 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 
@@ -75,6 +94,7 @@ cast_to = Vector2( 0, 10 )
 position = Vector2( 0, -9 )
 rotation = -1.5708
 enabled = true
+cast_to = Vector2( 0, 60 )
 collision_mask = 2
 
 [node name="Sprite" type="Sprite" parent="Pivot"]
@@ -85,11 +105,11 @@ flip_h = true
 vframes = 3
 hframes = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7 )
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
 anims/die = SubResource( 4 )
 anims/walk = SubResource( 3 )
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
