@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 18"
-run/main_scene="res://game.tscn"
+run/main_scene="res://david/david_test.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -112,6 +112,15 @@ shoot={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="player_bullets"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="enemy_bullets"
+2d_physics/layer_6="player_attack"
 
 [rendering]
 

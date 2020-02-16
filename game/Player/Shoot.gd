@@ -1,6 +1,8 @@
 extends PlayerState
 class_name Shoot
 
+onready var Bullet := preload("res://Bullet/bullet.tscn")
+
 func enter(msg: = {}) -> void:
 	animation_player.connect("animation_finished", self, "animation_player_on_animation_finished")
 	animation_player.play('shoot')
@@ -24,3 +26,9 @@ func _update_animation() -> void:
 func animation_player_on_animation_finished(name: String) -> void:
 	if name == 'shoot_run' or name == 'shoot':
 		_state_machine.transition_to('Move/Idle')
+
+func shoot() -> void:
+	var bullet = Bullet.instance()
+	bullet.direction = _parent.direction
+	bullet.global_position = bullet_spawner.global_position
+	get_tree().get_root().add_child(bullet)

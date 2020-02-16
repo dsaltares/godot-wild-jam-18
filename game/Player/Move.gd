@@ -8,6 +8,7 @@ const JUMP_HEIGHT := 40
 const DISTANCE_TO_PEAK := 70
 const DISTANCE_AFTER_PEAK := 40
 
+var direction := 1
 var move_dir := 0
 var gravity := 0
 var velocity = Vector2.ZERO
@@ -32,6 +33,7 @@ func _update_horizontal_velocity(delta):
 		move_dir = 1
 	
 	if move_dir != 0:
+		direction = move_dir
 		velocity.x += move_dir * (MAX_HORIZONTAL_SPEED/TIME_TO_MAX_SPEED) * delta
 		velocity.x = clamp(velocity.x, -MAX_HORIZONTAL_SPEED, MAX_HORIZONTAL_SPEED)
 	else:
@@ -62,7 +64,7 @@ func _update_vertical_velocity(delta):
 
 func _update_look_dir() -> void:
 	if move_dir:
-		sprite.flip_h = move_dir < 0
+		pivot.scale.x = move_dir
 		
 
 func _move(delta):
