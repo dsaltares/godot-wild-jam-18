@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://david/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Enemies/Brain/Brain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Alien/Alien.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Darklord/Darklord.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
 
@@ -25,5 +26,8 @@ position = Vector2( 192, 112 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 
+[node name="Darklord" parent="." instance=ExtResource( 5 )]
+position = Vector2( 168, 112 )
+
 [node name="Alien" parent="." instance=ExtResource( 4 )]
-position = Vector2( 152, 112 )
+position = Vector2( 344, 176 )
