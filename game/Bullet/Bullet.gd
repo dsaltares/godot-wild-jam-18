@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Bullet
 
 export var SPEED := 275
 
@@ -14,7 +15,12 @@ func _physics_process(delta: float) -> void:
 	sprite.flip_h = direction < 0
 	var collision := move_and_collide(Vector2(SPEED * direction * delta, 0))
 	
-	if collision == null:
+	if collision == null or not (collision.collider is Node):
 		return
+	
+	var collider := collision.collider as Node
+	
+	if collider.is_in_group("enemies"):
+		collider.take_damage()
 	
 	animation_player.play("hit")

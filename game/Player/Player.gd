@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Player
 
 
-onready var sprite := $Pivot/Sprite
 onready var state_machine: StateMachine = $StateMachine
 onready var animation_player := $AnimationPlayer
 onready var bullet_spawner := $Pivot/BulletSpawner
