@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/main_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/EnemySpawn.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192.211, 112.454 )
@@ -18,9 +19,9 @@ tile_data = PoolIntArray( 262160, 1073741824, 0, 262161, 1073741824, 0, 262162, 
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2( 180, 150 )
-script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2( 192, 112 )
 gravity = 0.0
 linear_damp = 0.0
@@ -28,4 +29,19 @@ angular_damp = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2( 176.931, 98.5885 )
+script = ExtResource( 3 )
+enemy_probability = 0.505
+
+[node name="EnemySpawn2" type="Node2D" parent="."]
+position = Vector2( 287.403, 37.851 )
+script = ExtResource( 3 )
+enemy_probability = 0.505
+
+[node name="EnemySpawn3" type="Node2D" parent="."]
+position = Vector2( 350.781, 153.604 )
+script = ExtResource( 3 )
+enemy_probability = 0.854
 [connection signal="body_entered" from="Area2D" to="." method="_on_Level_entered"]

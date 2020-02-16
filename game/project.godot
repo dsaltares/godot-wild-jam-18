@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/Darklord/Darklord.gd"
 }, {
+"base": "Node2D",
+"class": "EnemySpawn",
+"language": "GDScript",
+"path": "res://Levels/EnemySpawn.gd"
+}, {
 "base": "PlayerState",
 "class": "Idle",
 "language": "GDScript",
@@ -91,6 +96,7 @@ _global_script_class_icons={
 "Brain": "",
 "Bullet": "",
 "Darklord": "",
+"EnemySpawn": "",
 "Idle": "",
 "Level": "",
 "Move": "",

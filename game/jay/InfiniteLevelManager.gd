@@ -30,7 +30,7 @@ func load_random_level() -> Node2D:
 	
 	return level
 	
-func spawn_player(level: Node):
+func spawn_player(level: Level):
 	var player = player_scene.instance()
 	var player_spawn = level.find_node(("PlayerSpawn"))
 	
