@@ -61,5 +61,5 @@ func _on_player_enter(level: Level):
 		current_level = level
 		
 		# Append another level at the end
-		append_new_level()
+		call_deferred("append_new_level")
 	
