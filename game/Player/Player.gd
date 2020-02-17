@@ -38,6 +38,9 @@ func take_damage(damage : int = 1) -> void:
 func can_shoot() -> bool:
 	return ammo > 0
 
+func pickup_ammo(amount: int) -> void:
+	ammo = min(ammo + amount, MAX_AMMO)
+
 func shoot() -> bool:
 	if ammo <= 0:
 		return false

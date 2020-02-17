@@ -7,7 +7,7 @@ onready var root := $Root
 onready var health := $Root/Health
 
 func _ready() -> void:
-	yield(owner, "ready")
+	root.visible = true
 	
 func _process(delta: float) -> void:
 	var player := _find_player()

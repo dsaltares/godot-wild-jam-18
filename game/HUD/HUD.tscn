@@ -9,6 +9,7 @@
 script = ExtResource( 3 )
 
 [node name="Root" type="Node2D" parent="."]
+visible = false
 position = Vector2( 184, 88 )
 scale = Vector2( 4, 4 )
 

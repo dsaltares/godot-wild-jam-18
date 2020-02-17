@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/Alien/Alien.gd"
 }, {
+"base": "Area2D",
+"class": "Ammo",
+"language": "GDScript",
+"path": "res://Items/Ammo/Ammo.gd"
+}, {
 "base": "PlayerState",
 "class": "Attack",
 "language": "GDScript",
@@ -92,6 +97,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Air": "",
 "Alien": "",
+"Ammo": "",
 "Attack": "",
 "Brain": "",
 "Bullet": "",
@@ -162,6 +168,7 @@ dash={
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="enemy_bullets"
 2d_physics/layer_6="player_attack"
+2d_physics/layer_7="items"
 
 [rendering]
 
