@@ -6,7 +6,7 @@ enum State {
 	Hit
 }
 
-export var SPEED := 20
+export var SPEED := 350
 
 var direction := Vector2.RIGHT
 var state = State.Travel
@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	sprite.rotation = direction.angle()
-	print(sprite.rotation_degrees)
 	var collision := move_and_collide(direction * SPEED * delta)
 	
 	if collision:

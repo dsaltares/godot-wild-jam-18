@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -226,10 +226,28 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="Animation" id=12]
+resource_name = "damage"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 12, 12 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 position = Vector2( 0, -1 )
 collision_layer = 2
 script = ExtResource( 2 )
@@ -251,13 +269,15 @@ anims/run = SubResource( 9 )
 anims/shoot = SubResource( 10 )
 anims/shoot_run = SubResource( 11 )
 
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 12 )
+
 [node name="Pivot" type="Position2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Pivot"]
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 8
-frame = 2
 
 [node name="BulletSpawner" type="Position2D" parent="Pivot"]
 position = Vector2( 9, -1 )
@@ -268,7 +288,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackArea"]
 position = Vector2( 8, 4 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 5 )

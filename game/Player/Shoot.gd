@@ -28,7 +28,9 @@ func animation_player_on_animation_finished(name: String) -> void:
 		_state_machine.transition_to('Move/Idle')
 
 func shoot() -> void:
-	var bullet = Bullet.instance()
-	bullet.direction = Vector2(_parent.direction, 0)
-	bullet.global_position = bullet_spawner.global_position
-	get_tree().get_root().add_child(bullet)
+	var can_shoot = player.shoot()
+	if can_shoot:
+		var bullet = Bullet.instance()
+		bullet.direction = Vector2(_parent.direction, 0)
+		bullet.global_position = bullet_spawner.global_position
+		get_tree().get_root().add_child(bullet)

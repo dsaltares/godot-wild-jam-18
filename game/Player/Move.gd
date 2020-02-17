@@ -21,7 +21,7 @@ func _ready():
 	animation_player.connect("animation_changed", self, "on_AnimationPlayer_animation_changed")
 
 func unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot") and player.can_shoot():
 		_state_machine.transition_to("Move/Shoot")
 	if event.is_action_pressed("attack"):
 		_state_machine.transition_to("Move/Attack")
