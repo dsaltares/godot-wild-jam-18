@@ -6,13 +6,14 @@ const MAX_HEALTH_WIDTH = 50
 onready var root := $Root
 onready var health := $Root/Health
 
-func _ready() -> void:
-	root.visible = true
 	
 func _process(delta: float) -> void:
 	var player := _find_player()
 	if not player:
+		root.visible = false
 		return
+	
+	root.visible = true
 	_update_health(player)
 	_update_ammo(player)
 
