@@ -11,7 +11,7 @@
 extents = Vector2( 8, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 16 )
+extents = Vector2( 20, 16 )
 
 [node name="Darklord" type="KinematicBody2D" groups=[
 "enemies",
@@ -66,7 +66,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackArea"]
-position = Vector2( 18, -16 )
+position = Vector2( 12, -16 )
 shape = SubResource( 2 )
 disabled = true
 
