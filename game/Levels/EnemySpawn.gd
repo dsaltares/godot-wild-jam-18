@@ -12,16 +12,16 @@ const ENEMIES = [
 ]
 
 func _ready():
+	# Calculate a coefficient that increases with distance
+	var distance = get_parent().distance
+	var coef = 1 + (distance / 100.0)
+	
+	# Roll a number to spawn an enemy
 	randomize()
 	var roll = randf()
 	
-	if roll < enemy_probability:
+	if roll < coef * enemy_probability:
 		var enemy_scene = ResourceLoader.load(ENEMIES[randi() % 3])
 		var enemy = enemy_scene.instance()
 		
 		add_child(enemy)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
