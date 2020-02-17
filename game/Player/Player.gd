@@ -10,3 +10,6 @@ onready var attack_area := $Pivot/AttackArea
 
 func _physics_process(delta: float) -> void:
 	animation_player.advance(delta)
+
+func take_damage() -> void:
+	print("damage")

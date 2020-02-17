@@ -29,6 +29,6 @@ func animation_player_on_animation_finished(name: String) -> void:
 
 func shoot() -> void:
 	var bullet = Bullet.instance()
-	bullet.direction = _parent.direction
+	bullet.direction = Vector2(_parent.direction, 0)
 	bullet.global_position = bullet_spawner.global_position
 	get_tree().get_root().add_child(bullet)

@@ -7,14 +7,18 @@ enum State {
 	Die
 }
 
+onready var Bullet := preload("res://Bullet/EnemyBullet.tscn")
 onready var animation_player := $AnimationPlayer
 onready var pivot := $Pivot
 onready var detection_area := $DetectionArea
 onready var line_of_sight := $LineOfSight
 onready var attack_cooldown := $AttackCooldown
+onready var attack_area := $AttackArea
+onready var bullet_spawner := $Pivot/BulletSpawner
+onready var damage_area := $DamageArea
 
 var target : Player
-var state = Idle
+var state = State.Idle
 var has_line_of_sight := false
 
 func _ready() -> void:
@@ -27,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	_look_at_target()
 	_update_line_of_sight()
 	_update_attack()
+	_update_damage_area()
 
 func take_damage() -> void:
 	animation_player.play("die")
@@ -34,6 +39,8 @@ func take_damage() -> void:
 func on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "die":
 		queue_free()
+	elif name == "attack":
+		finish_attack()
 
 func on_DetectionArea_body_entered(body: Node) -> void:
 	if not body is Player:
@@ -65,4 +72,41 @@ func _update_line_of_sight() -> void:
 	has_line_of_sight = collider == target
 	
 func _update_attack() -> void:
-	pass
+	var can_attack = \
+		state == State.Idle and \
+		has_line_of_sight and \
+		target != null and \
+		attack_cooldown.time_left == 0 and \
+		attack_area.overlaps_body(target)
+	
+	if not can_attack:
+		return
+	
+	state = State.Attack
+	animation_player.play("attack")
+			
+
+func _update_damage_area() -> void:
+	var bodies = damage_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("take_damage"):
+			body.take_damage()
+
+func shoot() -> void:
+	if not target:
+		finish_attack()
+		return
+		
+	var target_pos = target.global_position
+	var to_target = target_pos - line_of_sight.global_position
+	var to_target_dir = to_target.normalized()
+	
+	var bullet = Bullet.instance()
+	bullet.direction = to_target_dir
+	bullet.global_position = bullet_spawner.global_position
+	get_tree().get_root().add_child(bullet)
+
+func finish_attack():
+	state = State.Idle
+	animation_player.play("idle")
+	attack_cooldown.start()

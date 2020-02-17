@@ -6,9 +6,7 @@
 [ext_resource path="res://Enemies/Darklord/darklord_anim_die.tres" type="Animation" id=4]
 [ext_resource path="res://Enemies/Darklord/darklord_anim_idle.tres" type="Animation" id=5]
 [ext_resource path="res://Enemies/Darklord/darklord_anim_walk.tres" type="Animation" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 16 )
+[ext_resource path="res://Enemies/Darklord/darklord_collision_shape.tres" type="Shape2D" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 16 )
@@ -17,13 +15,20 @@ extents = Vector2( 20, 16 )
 "enemies",
 ]]
 collision_layer = 8
-collision_mask = 7
 script = ExtResource( 2 )
 dash_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
-shape = SubResource( 1 )
+shape = ExtResource( 7 )
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2( 0, -16 )
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = ExtResource( 7 )
 
 [node name="Pivot" type="Position2D" parent="."]
 
@@ -58,6 +63,7 @@ position = Vector2( 0, -32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 16
+frame = 2
 
 [node name="AttackArea" type="Area2D" parent="Pivot" groups=[
 "enemies",

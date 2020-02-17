@@ -20,6 +20,7 @@ onready var wall_ahead_raycast := $Pivot/WallAheadRayCast
 onready var wall_behind_raycast := $Pivot/WallBehindRayCast
 onready var player_raycast := $Pivot/PlayerRayCast
 onready var attack_cooldown := $AttackCooldown
+onready var damage_area := $DamageArea
 
 export var dash_enabled := false
 
@@ -45,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	_move(delta)
 	_update_direction()
 	_update_pivot()
+	_update_damage_area()
 
 func _on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "die":
@@ -121,4 +123,11 @@ func _update_direction() -> void:
 	
 	if should_turn:
 		direction *= -1
+
 	
+func _update_damage_area() -> void:
+	var bodies = damage_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("take_damage"):
+			body.take_damage()
+
