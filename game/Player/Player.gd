@@ -11,6 +11,7 @@ onready var bullet_spawner := $Pivot/BulletSpawner
 onready var pivot := $Pivot
 onready var attack_area := $Pivot/AttackArea
 onready var effect_player := $EffectPlayer
+onready var ammo_sfx := $SFX/Pickup
 
 const MAX_HEALTH = 5
 const MAX_AMMO = 26
@@ -39,6 +40,7 @@ func can_shoot() -> bool:
 	return ammo > 0
 
 func pickup_ammo(amount: int) -> void:
+	ammo_sfx.play()
 	ammo = min(ammo + amount, MAX_AMMO)
 
 func shoot() -> bool:
@@ -53,3 +55,6 @@ func shoot() -> bool:
 func on_EffectPlayer_animation_finished(name: String) -> void:
 	if name == "damage":
 		taking_damage = false
+
+func get_sfx(name: String) -> AudioStreamPlayer:
+	return get_node("SFX/%s" % name) as AudioStreamPlayer

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/attack.wav-3baeba9d33a3a3dbd53dac7fb7f4806d.sample"
+
+[deps]
+
+source_file="res://Enemies/Darklord/attack.wav"
+dest_files=[ "res://.import/attack.wav-3baeba9d33a3a3dbd53dac7fb7f4806d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

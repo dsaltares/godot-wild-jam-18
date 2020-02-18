@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/Darklord/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Darklord/Darklord.gd" type="Script" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://Enemies/Darklord/darklord_anim_idle.tres" type="Animation" id=5]
 [ext_resource path="res://Enemies/Darklord/darklord_anim_walk.tres" type="Animation" id=6]
 [ext_resource path="res://Enemies/Darklord/darklord_collision_shape.tres" type="Shape2D" id=7]
+[ext_resource path="res://Enemies/Darklord/death.wav" type="AudioStream" id=8]
+[ext_resource path="res://Enemies/Darklord/attack.wav" type="AudioStream" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 16 )
 
 [node name="Darklord" type="KinematicBody2D" groups=[
@@ -73,7 +75,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackArea"]
 position = Vector2( 12, -16 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -85,3 +87,11 @@ anims/walk = ExtResource( 6 )
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 8 )
+
+[node name="Attack" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 9 )

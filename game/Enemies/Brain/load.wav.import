@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/load.wav-e276b5bdf63fa31bfc896d668115c93c.sample"
+
+[deps]
+
+source_file="res://Enemies/Brain/load.wav"
+dest_files=[ "res://.import/load.wav-e276b5bdf63fa31bfc896d668115c93c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

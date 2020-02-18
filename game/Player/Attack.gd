@@ -2,6 +2,7 @@ extends PlayerState
 class_name Attack
 
 func enter(msg: = {}) -> void:
+	player.get_sfx("Attack").play()
 	animation_player.connect("animation_finished", self, "on_animation_player_on_animation_finished")
 	attack_area.connect("body_entered", self, "on_attack_area_body_entered")
 	animation_player.play('attack')

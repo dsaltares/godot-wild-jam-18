@@ -3,7 +3,8 @@ class_name Ammo
 
 export var amount := 4
 
-onready var animation_player = $AnimationPlayer
+onready var animation_player := $AnimationPlayer
+onready var pickup_sfx := $Pickup
 
 func _ready() -> void:
 	self.connect("body_entered", self, "on_Ammo_body_entered")

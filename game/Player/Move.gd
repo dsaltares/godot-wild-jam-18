@@ -31,6 +31,7 @@ func physics_process(delta: float) -> void:
 	_update_horizontal_velocity(delta)
 	_update_vertical_velocity(delta)
 	_update_look_dir() 
+	_update_footsteps()
 	_move(delta)
 
 func _update_move_dir() -> void:
@@ -69,6 +70,7 @@ func _update_vertical_velocity(delta):
 	var max_horizontal_speed = MAX_RUNNING_SPEED
 
 	if player.is_on_floor() and Input.is_action_just_pressed("jump"):
+		player.get_sfx("Jump").play()
 		var jump_speed = -2 * JUMP_HEIGHT * max_horizontal_speed / DISTANCE_TO_PEAK
 		velocity.y = jump_speed
 	elif not player.is_on_floor():
@@ -105,6 +107,14 @@ func _move(delta):
 		max_slope,
 		infinite_inertia
 	)
+	
+func _update_footsteps() -> void:
+	var sfx : AudioStreamPlayer = player.get_sfx("Footsteps")
+	var should_play = abs(velocity.x) > 0 and player.is_on_floor()
+	if should_play and not sfx.playing:
+		sfx.play()
+	elif not should_play and sfx.playing:
+		sfx.stop()
 
 func on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "dash":
