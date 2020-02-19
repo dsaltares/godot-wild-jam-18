@@ -7,6 +7,7 @@ func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not _parent.is_dashing:
 		animation_player.play("dash")
 		_parent.is_dashing = true
+		player.get_sfx("Dash").play()
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
