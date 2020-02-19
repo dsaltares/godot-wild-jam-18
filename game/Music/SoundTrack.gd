@@ -15,6 +15,6 @@ func next() -> void:
 	current_track_idx = (current_track_idx + 1) % get_child_count()
 	current_track = get_child(current_track_idx) as AudioStreamPlayer
 	current_track.play()
-	var track : AudioStreamPlayer = get_child(current_track) as AudioStreamPlayer
+	var track : AudioStreamPlayer = get_child(current_track_idx) as AudioStreamPlayer
 	if not track.playing:
 		next()
