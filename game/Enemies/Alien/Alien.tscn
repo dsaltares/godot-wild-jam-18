@@ -10,6 +10,7 @@
 [ext_resource path="res://Enemies/Alien/attack.wav" type="AudioStream" id=8]
 
 [node name="Alien" type="KinematicBody2D" groups=[
+"camera_shakers",
 "enemies",
 ]]
 collision_layer = 8

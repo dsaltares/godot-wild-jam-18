@@ -65,7 +65,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="KinematicBody2D" groups=[
+"camera_shakers",
+]]
 collision_layer = 4
 script = ExtResource( 2 )
 

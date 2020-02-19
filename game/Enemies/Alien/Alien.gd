@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Alien
 
+signal shake_requested
 
 enum State {
 	Walk,
@@ -29,6 +30,7 @@ var direction := -1
 var velocity := Vector2.ZERO
 
 func take_damage() -> void:
+	emit_signal("shake_requested")
 	state = State.Die
 	animation_player.play("die")
 

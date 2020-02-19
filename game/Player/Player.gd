@@ -4,6 +4,7 @@ class_name Player
 signal health_changed
 signal damaged
 signal ammo_changed
+signal shake_requested
 
 onready var state_machine: StateMachine = $StateMachine
 onready var animation_player := $AnimationPlayer
@@ -29,12 +30,13 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage : int = 1) -> void:
 	if taking_damage:
 		return
-		
+	
 	health = max(health - damage, 0)
 	taking_damage = true
 	effect_player.play("damage")
 	emit_signal("damaged")
 	emit_signal("health_changed", health)
+	emit_signal("shake_requested")
 
 func can_shoot() -> bool:
 	return ammo > 0

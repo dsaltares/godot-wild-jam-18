@@ -283,6 +283,7 @@ tracks/1/keys = {
 extents = Vector2( 12, 12 )
 
 [node name="Player" type="KinematicBody2D" groups=[
+"camera_shakers",
 "player",
 ]]
 position = Vector2( 0, -1 )

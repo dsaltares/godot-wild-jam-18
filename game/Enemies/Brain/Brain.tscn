@@ -226,6 +226,7 @@ radius = 96.0
 radius = 65.9697
 
 [node name="Brain" type="KinematicBody2D" groups=[
+"camera_shakers",
 "enemies",
 ]]
 collision_layer = 8

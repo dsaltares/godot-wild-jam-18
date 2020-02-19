@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Brain
 
+signal shake_requested
+
 enum State {
 	Idle,
 	Attack,
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	_update_damage_area()
 
 func take_damage() -> void:
+	emit_signal("shake_requested")
 	animation_player.play("die")
 
 func on_AnimationPlayer_animation_finished(name: String) -> void:

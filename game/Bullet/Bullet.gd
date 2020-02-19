@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Bullet
 
+signal shake_requested
+
 enum State {
 	Travel,
 	Hit
@@ -27,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(direction * SPEED * delta)
 	
 	if collision:
+		emit_signal("shake_requested")
 		hit()
 	
 func on_DamageArea_body_entered(body: Node) -> void:
