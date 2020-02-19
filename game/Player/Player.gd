@@ -13,6 +13,8 @@ onready var pivot := $Pivot
 onready var attack_area := $Pivot/AttackArea
 onready var effect_player := $EffectPlayer
 onready var ammo_sfx := $SFX/Pickup
+onready var blood_particles := $Pivot/BloodParticles
+onready var land_particles := $Pivot/LandParticles
 
 const MAX_HEALTH = 5
 const MAX_AMMO = 26
@@ -33,6 +35,7 @@ func take_damage(damage : int = 1) -> void:
 	
 	health = max(health - damage, 0)
 	taking_damage = true
+	blood_particles.emitting = true
 	effect_player.play("damage")
 	emit_signal("damaged")
 	emit_signal("health_changed", health)

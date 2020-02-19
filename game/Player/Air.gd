@@ -19,6 +19,7 @@ func physics_process(delta: float) -> void:
 			animation_player.play("jump_air")
 		
 	if player.is_on_floor():
+		player.land_particles.emitting = true
 		player.get_sfx("Land").play()
 		_state_machine.transition_to('Move/Idle')
 		
