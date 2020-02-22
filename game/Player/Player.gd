@@ -5,6 +5,7 @@ signal health_changed
 signal damaged
 signal ammo_changed
 signal shake_requested
+signal death
 
 onready var state_machine: StateMachine = $StateMachine
 onready var animation_player := $AnimationPlayer
@@ -40,6 +41,9 @@ func take_damage(damage : int = 1) -> void:
 	emit_signal("damaged")
 	emit_signal("health_changed", health)
 	emit_signal("shake_requested")
+	
+	if health == 0:
+		emit_signal("death")
 
 func can_shoot() -> bool:
 	return ammo > 0

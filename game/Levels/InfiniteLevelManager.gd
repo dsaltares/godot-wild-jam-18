@@ -1,6 +1,9 @@
 extends Node2D
+class_name InfiniteLevelManager
 
-const player_scene = preload("res://Player/player.tscn")
+signal done
+
+const PlayerScene = preload("res://Player/player.tscn")
 
 const LEVEL_WIDTH = 384
 const LEVELS = [
@@ -33,10 +36,11 @@ func load_random_level() -> Node2D:
 	return level
 	
 func spawn_player(level: Level):
-	var player = player_scene.instance()
+	var player = PlayerScene.instance()
 	var player_spawn = level.find_node(("PlayerSpawn"))
 	
 	player.position = player_spawn.position
+	player.connect("death", self, "_on_player_death")
 	add_child(player)
 
 func append_new_level():
@@ -71,3 +75,5 @@ func _on_player_enter(level: Level):
 		# Append another level at the end
 		call_deferred("append_new_level")
 
+func _on_player_death() -> void:
+	emit_signal("done")
