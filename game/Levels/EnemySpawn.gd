@@ -4,8 +4,7 @@ class_name EnemySpawn
 
 export(float, 0, 1) var enemy_probability = 1
 
-enum DIFFICULTY {EASY, MEDIUM, HARD}
-export(DIFFICULTY) var enemy_max_level = DIFFICULTY.EASY
+export(Globals.DIFFICULTY) var enemy_max_level = Globals.DIFFICULTY.EASY
 
 const ENEMIES = [
 	"res://Enemies/Alien/Alien.tscn",
@@ -23,7 +22,8 @@ func _ready():
 	var roll = randf()
 	
 	if roll < coef * enemy_probability:
-		var enemy_scene = ResourceLoader.load(ENEMIES[randi() % (enemy_max_level + 1)])
+		var enemy_difficulty = randi() % (enemy_max_level + 1)
+		var enemy_scene = ResourceLoader.load(ENEMIES[enemy_difficulty])
 		var enemy = enemy_scene.instance()
 		
 		add_child(enemy)

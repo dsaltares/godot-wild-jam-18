@@ -126,6 +126,10 @@ config/name="Godot Wild Jam 18"
 run/main_scene="res://david/david_test.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [display]
 
 window/size/width=1280

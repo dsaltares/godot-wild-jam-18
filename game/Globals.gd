@@ -1,0 +1,4 @@
+extends Node
+
+enum DIFFICULTY { EASY, MEDIUM, HARD }
+enum LEVEL_HEIGHT { LOW, HIGH }
