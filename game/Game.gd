@@ -8,7 +8,7 @@ enum State {
 
 onready var IntroScreen = preload("res://Menus/Intro.tscn")
 onready var GameScreen = preload("res://Levels/InfiteLevelManager.tscn")
-onready var DeathScreen = preload("res://menus/Death.tscn")
+onready var DeathScreen = preload("res://Menus/Death.tscn")
 
 onready var current_root = $CurrentSceneRoot
 

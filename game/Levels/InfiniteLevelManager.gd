@@ -6,11 +6,6 @@ signal done
 const PlayerScene = preload("res://Player/player.tscn")
 
 const LEVEL_WIDTH = 384
-const LEVELS = [
-	"res://Levels/level1.tscn",
-	"res://Levels/level2.tscn",
-	"res://Levels/level3.tscn"
-]
 
 var current_level: Level
 var previous_level: Level
@@ -28,11 +23,14 @@ func _ready():
 	# Add a second screen at the end
 	append_new_level()
 
-func load_random_level() -> Node2D:
+func load_random_level(height = null) -> Node2D:
 	randomize()
-	var scene = ResourceLoader.load(LEVELS[randi() % 3])
-	var level = scene.instance()
 	
+	var levels = Globals.LEVELS_BY_ENTRANCE_HEIGHT[height] if height else Globals.LEVELS.keys()
+	
+	var scene = ResourceLoader.load(levels[randi() % len(levels)])
+	var level = scene.instance()
+
 	return level
 	
 func spawn_player(level: Level):
@@ -45,7 +43,7 @@ func spawn_player(level: Level):
 
 func append_new_level():
 	# Get an instance of a new random level
-	var level = load_random_level()
+	var level = load_random_level(Globals.LEVELS[current_level.filename].exit_height)
 	
 	# Add info about how far the player has gone
 	level.distance = distance
