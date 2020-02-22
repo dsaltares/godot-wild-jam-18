@@ -127,6 +127,8 @@ func _update_direction() -> void:
 		direction *= -1
 	
 func _update_damage_area() -> void:
+	if state == State.Die:
+		return
 	var bodies = damage_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage"):
