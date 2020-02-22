@@ -9,7 +9,7 @@
 [ext_resource path="res://Items/Ammo/Ammo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Camera/Camera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Music/SoundTrack.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Game.gd" type="Script" id=10]
+[ext_resource path="res://david/Game.gd" type="Script" id=10]
 
 [node name="Root" type="Node2D"]
 position = Vector2( -1, 0 )
