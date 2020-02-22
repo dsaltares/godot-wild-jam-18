@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/main_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Levels/EnemySpawn.gd" type="Script" id=3]
+[ext_resource path="res://Levels/ItemDrop.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192.211, 112.454 )
@@ -51,4 +52,8 @@ enemy_max_level = 2
 position = Vector2( 205.771, 105.037 )
 script = ExtResource( 3 )
 enemy_probability = 0.495
+
+[node name="ItemDrop" type="Node2D" parent="."]
+position = Vector2( 262.686, 168.638 )
+script = ExtResource( 4 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Level_entered"]
