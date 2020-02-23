@@ -4,7 +4,6 @@ class_name GameCamera
 const TRANS := Tween.TRANS_SINE
 const EASE := Tween.EASE_IN_OUT
 
-var player: Player
 var camera_dimensions: Vector2
 var amplitude := 0.0
 onready var shake_tween := $Shake
@@ -12,12 +11,16 @@ onready var frequency_timer := $Frequency
 onready var duration_timer := $Duration
 
 func _ready():
-	player = get_parent().find_node("Player", true, false) as Player
 	camera_dimensions = get_viewport().size * zoom
 	frequency_timer.connect("timeout", self, "_on_Frequency_timeout")
 	duration_timer.connect("timeout", self, "_on_Duration_timeout")
 
 func _process(delta):
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() == 0:
+		return
+		
+	var player = players[0]
 	if !player:
 		player = get_parent().find_node("Player", true, false)
 		return
