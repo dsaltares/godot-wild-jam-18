@@ -15,6 +15,7 @@ const ATTACK_DASH_SPEED = 250
 const GRAVITY = 1000
 
 onready var animation_player := $AnimationPlayer
+onready var effect_player := $EffectPlayer
 onready var pivot := $Pivot
 onready var floor_raycast := $Pivot/FloorAheadRayCast
 onready var floor_behind_raycast := $Pivot/FloorBehindRayCast
@@ -26,6 +27,7 @@ onready var damage_area := $DamageArea
 
 export var dash_enabled := false
 
+var health = 3
 var points = 5
 var state = State.Walk
 var direction := -1
@@ -34,11 +36,16 @@ var velocity := Vector2.ZERO
 func take_damage() -> bool:
 	if state == State.Die:
 		return false
-		
-	emit_signal("shake_requested")
-	state = State.Die
-	animation_player.play("die")
-	return true
+	
+	if health == 1:
+		emit_signal("shake_requested")
+		state = State.Die
+		animation_player.play("die")
+		return true
+	else:
+		health -= 1
+		effect_player.play("damage")
+		return true
 
 func _ready() -> void:
 	animation_player.play("walk")
