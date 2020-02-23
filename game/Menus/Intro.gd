@@ -32,4 +32,3 @@ func _input(event):
 func _on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "intro":
 		animation_player.play("idle")
-
