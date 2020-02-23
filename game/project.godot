@@ -146,7 +146,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Wild Jam 18"
+config/name="Plague - Godot Wild Jam 18"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
