@@ -7,8 +7,8 @@ export(float, 0, 1) var enemy_probability = 1
 export(Globals.DIFFICULTY) var enemy_max_level = Globals.DIFFICULTY.EASY
 
 const ENEMIES = [
-	"res://Enemies/Alien/Alien.tscn",
 	"res://Enemies/Brain/Brain.tscn",
+	"res://Enemies/Alien/Alien.tscn",
 	"res://Enemies/Darklord/Darklord.tscn" 
 ]
 

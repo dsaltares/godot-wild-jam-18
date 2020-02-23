@@ -32,21 +32,21 @@ angular_damp = 0.0
 shape = SubResource( 1 )
 
 [node name="EnemySpawn" type="Node2D" parent="."]
-position = Vector2( 138.477, 52.9402 )
+position = Vector2( 139.076, 55.9339 )
 script = ExtResource( 3 )
-enemy_probability = 0.806
+enemy_probability = 0.456
+enemy_max_level = 1
 
 [node name="EnemySpawn2" type="Node2D" parent="."]
 position = Vector2( 194.781, 132.729 )
 script = ExtResource( 3 )
-enemy_probability = 0.155
-enemy_max_level = 2
+enemy_probability = 0.327
+enemy_max_level = 1
 
 [node name="EnemySpawn3" type="Node2D" parent="."]
-position = Vector2( 343.523, 175.703 )
+position = Vector2( 341.727, 182.888 )
 script = ExtResource( 3 )
-enemy_probability = 0.602
-enemy_max_level = 1
+enemy_probability = 0.808
 
 [node name="ItemDrop" type="Node2D" parent="."]
 position = Vector2( 235.364, 189.381 )
