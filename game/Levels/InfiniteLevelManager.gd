@@ -58,6 +58,9 @@ func append_new_level():
 	level.connect("player_enter", self, "_on_player_enter")
 
 func _on_player_enter(level: Level):
+	var player := _find_player()
+	if player:
+		player.add_points(1)
 	# If we are not going back to a previous screen
 	if level != current_level and level != previous_level:
 		# Destroy old levels
@@ -79,7 +82,13 @@ func _on_player_death() -> void:
 	emit_signal("done")
 
 func _connect_player_signal() -> void:
+	var player := _find_player()
+	if player and not player.is_connected("death", self, "_on_player_death"):
+		player.connect("death", self, "_on_player_death")
+
+func _find_player() -> Player:
 	var players := get_tree().get_nodes_in_group("player")
-	for player in players:
-		if not player.is_connected("death", self, "_on_player_death"):
-			player.connect("death", self, "_on_player_death")
+	if players.size() == 0:
+		return null
+	
+	return players[0] as Player

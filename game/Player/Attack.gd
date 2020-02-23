@@ -29,4 +29,10 @@ func on_animation_player_on_animation_finished(name: String) -> void:
 
 func on_attack_area_body_entered(body: Node) -> void:
 	if body.is_in_group("enemies"):
-		body.take_damage()
+		var damaged = body.take_damage()
+		if damaged:
+			var points = 1
+			if body.get("points"):
+				points = body.points
+				
+			player.add_points(points)

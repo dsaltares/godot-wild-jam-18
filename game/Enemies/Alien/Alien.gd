@@ -25,14 +25,18 @@ onready var damage_area := $DamageArea
 
 export var dash_enabled := false
 
+var points = 2
 var state = State.Walk
 var direction := -1
 var velocity := Vector2.ZERO
-
-func take_damage() -> void:
+func take_damage() -> bool:
+	if state == State.Die:
+		return false
+		
 	emit_signal("shake_requested")
 	state = State.Die
 	animation_player.play("die")
+	return true
 
 func _ready() -> void:
 	animation_player.play("walk")

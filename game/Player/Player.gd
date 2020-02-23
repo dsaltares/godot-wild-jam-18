@@ -23,6 +23,7 @@ const MAX_AMMO = 26
 var health = MAX_HEALTH
 var ammo = 5
 var taking_damage = false
+var score = 0
 
 func _ready() -> void:
 	effect_player.connect("animation_finished", self, "on_EffectPlayer_animation_finished")
@@ -51,6 +52,9 @@ func can_shoot() -> bool:
 func pickup_ammo(amount: int) -> void:
 	ammo_sfx.play()
 	ammo = min(ammo + amount, MAX_AMMO)
+
+func add_points(points: int = 1) -> void:
+	score += points
 
 func shoot() -> bool:
 	if ammo <= 0:
