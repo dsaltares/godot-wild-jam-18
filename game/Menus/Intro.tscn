@@ -307,5 +307,5 @@ stream = ExtResource( 12 )
 
 [node name="Welcome" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-volume_db = 4.425
+volume_db = 11.063
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
