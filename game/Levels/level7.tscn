@@ -44,7 +44,7 @@ enemy_probability = 0.749
 enemy_max_level = 1
 
 [node name="EnemySpawn3" type="Node2D" parent="."]
-position = Vector2( 325.208, 182.702 )
+position = Vector2( 328.8, 182.104 )
 script = ExtResource( 3 )
 enemy_probability = 0.749
 enemy_max_level = 2

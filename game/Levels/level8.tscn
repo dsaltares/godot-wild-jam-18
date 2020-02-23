@@ -38,17 +38,17 @@ enemy_probability = 0.456
 enemy_max_level = 1
 
 [node name="EnemySpawn2" type="Node2D" parent="."]
-position = Vector2( 194.781, 132.729 )
+position = Vector2( 192.985, 139.914 )
 script = ExtResource( 3 )
 enemy_probability = 0.327
 enemy_max_level = 1
 
 [node name="EnemySpawn3" type="Node2D" parent="."]
-position = Vector2( 341.727, 182.888 )
+position = Vector2( 341.128, 186.48 )
 script = ExtResource( 3 )
 enemy_probability = 0.808
 
 [node name="ItemDrop" type="Node2D" parent="."]
-position = Vector2( 235.364, 189.381 )
+position = Vector2( 234.166, 197.764 )
 script = ExtResource( 4 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Level_entered"]
