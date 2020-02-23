@@ -114,10 +114,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 96.0
+radius = 165.733
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 65.9697
+radius = 131.076
 
 [node name="Brain" type="KinematicBody2D" groups=[
 "camera_shakers",
