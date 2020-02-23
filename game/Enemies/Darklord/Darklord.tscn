@@ -49,7 +49,6 @@ tracks/1/keys = {
 ]]
 collision_layer = 8
 script = ExtResource( 2 )
-dash_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
@@ -96,7 +95,7 @@ position = Vector2( 0, -32 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 16
-frame = 2
+frame = 16
 
 [node name="AttackArea" type="Area2D" parent="Pivot" groups=[
 "enemies",
@@ -126,6 +125,11 @@ one_shot = true
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
+volume_db = 16.596
+
+[node name="Damage" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 8 )
+volume_db = 8.852
 
 [node name="Attack" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )

@@ -9,7 +9,6 @@ onready var darklord_anim := $GameScene/Darklord/AnimationPlayer
 
 onready var animation_player := $AnimationPlayer
 onready var key_sfx := $PressKey
-onready var welcome_voice := $Welcome
 
 var skipped = false
 
@@ -17,7 +16,6 @@ func _ready() -> void:
 	player_anim.play("idle")
 	skull_anim.play("idle")
 	darklord_anim.play("idle")
-	welcome_voice.play()
 
 func _input(event):
 	var is_key = event is InputEventKey and event.is_pressed()

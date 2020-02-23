@@ -12,7 +12,6 @@
 [ext_resource path="res://david/Game.gd" type="Script" id=10]
 [ext_resource path="res://Levels/Storm/Storm.tscn" type="PackedScene" id=11]
 
-
 [node name="Root" type="Node2D"]
 position = Vector2( -1, 0 )
 script = ExtResource( 10 )
