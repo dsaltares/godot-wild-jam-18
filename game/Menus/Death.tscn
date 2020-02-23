@@ -123,7 +123,7 @@ anims/intro = SubResource( 2 )
 
 [node name="YouAreDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 3.319
+volume_db = 6.638
 
 [node name="PressKey" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
