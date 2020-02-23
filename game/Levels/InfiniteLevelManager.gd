@@ -44,11 +44,6 @@ func spawn_player(level: Level):
 func append_new_level():
 	# Get an instance of a new random level
 	var level = load_random_level(Globals.LEVELS[current_level.filename].exit_height)
-	print("//////////////")
-	print(current_level.filename)
-	print(Globals.LEVELS[current_level.filename].exit_height)
-	print(level.filename)
-	print(Globals.LEVELS[level.filename].entrance_height)
 	
 	# Add info about how far the player has gone
 	level.distance = distance

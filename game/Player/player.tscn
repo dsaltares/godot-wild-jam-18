@@ -307,6 +307,7 @@ colors = PoolColorArray( 0.441406, 0, 0, 1, 0.265625, 0, 0, 1 )
 "player",
 ]]
 position = Vector2( 0, -1 )
+z_index = 10
 collision_layer = 2
 collision_mask = 65
 script = ExtResource( 2 )
