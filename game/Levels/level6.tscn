@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://Levels/main_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/EnemySpawn.gd" type="Script" id=3]
+[ext_resource path="res://Levels/ItemDrop.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 192.211, 112.454 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65554, 42, 0, 327680, 2, 0, 327681, 16, 0, 327688, 43, 0, 327699, 133, 0, 327700, 135, 0, 327703, 1073741831, 0, 393217, 17, 0, 393234, 138, 0, 393235, 1073741831, 0, 393236, 1073741855, 0, 393237, 1073741856, 0, 393238, 1073741855, 0, 393239, 1073741850, 0, 458753, 18, 0, 458771, 1073741860, 0, 458775, 112, 0, 524289, 17, 0, 524290, -1610612603, 0, 524306, 98, 0, 524307, 1073741860, 0, 524309, 114, 0, 589825, 1073741841, 0, 589826, -1610612602, 0, 589836, 141, 0, 589842, 1073741831, 0, 589843, 1073741850, 0, 589844, 111, 0, 589846, 113, 0, 655361, -536870898, 0, 655375, 1073741831, 0, 655376, 1073741856, 0, 655377, 1073741855, 0, 655378, 1073741850, 0, 720897, -536870897, 0, 720911, 1073741857, 0, 720912, 112, 0, 720915, 112, 0, 720919, 113, 0, 786433, 1610612769, 0, 786434, 137, 0, 786441, 99, 0, 786442, 99, 0, 786443, 132, 0, 786447, 1073741860, 0, 786449, 111, 0, 786452, 113, 0, 851969, 1610612772, 0, 851977, 1073741831, 0, 851978, 1073741832, 0, 851979, 1073741833, 0, 851980, 1073741856, 0, 851981, 1073741855, 0, 851982, 1073741856, 0, 851983, 1073741850, 0 )
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2( 15.7703, 28.8606 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2( 192, 112 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2( 190.766, 185.481 )
+script = ExtResource( 3 )
+enemy_probability = 0.616
+enemy_max_level = 1
+
+[node name="EnemySpawn2" type="Node2D" parent="."]
+position = Vector2( 341.909, 77.5454 )
+script = ExtResource( 3 )
+enemy_probability = 0.505
+enemy_max_level = 2
+
+[node name="ItemDrop" type="Node2D" parent="."]
+position = Vector2( 266.79, 148.305 )
+script = ExtResource( 4 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Level_entered"]
