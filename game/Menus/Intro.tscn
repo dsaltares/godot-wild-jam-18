@@ -153,12 +153,24 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("UI/Controls:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.6, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Intro" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="WildJamHead" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.156863 )
 position = Vector2( 248, 336 )
 scale = Vector2( 0.628448, 0.628448 )
 texture = ExtResource( 7 )
@@ -172,9 +184,9 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="UI"]
-margin_top = 6.85715
+margin_top = 208.0
 margin_right = 1280.0
-margin_bottom = 150.857
+margin_bottom = 352.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Plague"
@@ -188,7 +200,6 @@ __meta__ = {
 margin_top = 328.0
 margin_right = 1280.0
 margin_bottom = 472.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 640, 80 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -200,9 +211,9 @@ __meta__ = {
 }
 
 [node name="Credits" type="Label" parent="UI"]
-margin_top = 720.0
+margin_top = 672.0
 margin_right = 1280.0
-margin_bottom = 768.0
+margin_bottom = 720.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Developed by David Saltares and Jay Cano for Godot Wild Jam #18"
@@ -212,8 +223,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Controls" type="Label" parent="UI"]
+margin_left = -8.0
+margin_top = 488.0
+margin_right = 1280.0
+margin_bottom = 536.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Arrows to move
+X to attack
+Z to shoot
+Shift to Dash"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Wildcards" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1024, 72 )
 scale = Vector2( 0.1, 0.1 )
 
