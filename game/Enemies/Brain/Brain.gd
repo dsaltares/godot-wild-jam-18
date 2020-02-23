@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage() -> void:
 	emit_signal("shake_requested")
+	state = State.Die
 	animation_player.play("die")
 
 func on_AnimationPlayer_animation_finished(name: String) -> void:
