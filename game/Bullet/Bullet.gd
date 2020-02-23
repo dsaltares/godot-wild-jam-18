@@ -39,8 +39,11 @@ func on_DamageArea_body_entered(body: Node) -> void:
 func hit(node: Node = null) -> void:
 	if node and node.has_method("take_damage"):
 		node.take_damage()
+		
+		if shooter and shooter.has_method("add_points"):
+			shooter.add_points(node.points)
+	
 	state = State.Hit
 	animation_player.play("hit")
 	
-	if shooter and shooter.has_method("add_points"):
-		shooter.add_points(node.points)
+	
