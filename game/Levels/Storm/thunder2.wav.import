@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thunder2.wav-5792b1d385f9e691a8443eb2a4a52414.sample"
+
+[deps]
+
+source_file="res://Levels/Storm/thunder2.wav"
+dest_files=[ "res://.import/thunder2.wav-5792b1d385f9e691a8443eb2a4a52414.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

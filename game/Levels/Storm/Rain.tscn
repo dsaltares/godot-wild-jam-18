@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Storm/rain.wav" type="AudioStream" id=1]
+[ext_resource path="res://Levels/Storm/Rain.gd" type="Script" id=2]
+
+[node name="Rain" type="CPUParticles2D"]
+position = Vector2( 376, -8 )
+amount = 100
+lifetime = 3.0
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 400, 1 )
+gravity = Vector2( -50, 98 )
+color = Color( 0.333333, 0.647059, 0.972549, 1 )
+script = ExtResource( 2 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -80.0
+
+[node name="Tween" type="Tween" parent="."]

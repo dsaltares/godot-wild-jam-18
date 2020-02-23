@@ -16,6 +16,7 @@ font_data = ExtResource( 5 )
 script = ExtResource( 3 )
 
 [node name="Root" type="Node2D" parent="."]
+visible = false
 position = Vector2( 144, 56 )
 scale = Vector2( 4, 4 )
 
@@ -136,6 +137,7 @@ position = Vector2( 65, 14 )
 texture = ExtResource( 2 )
 
 [node name="Score" type="Label" parent="."]
+visible = false
 margin_left = 272.0
 margin_top = 32.0
 margin_right = 362.0

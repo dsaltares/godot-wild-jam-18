@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera/Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Music/SoundTrack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Music/dark_retrowave_cyberpunk.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Levels/InfiniteLevelManager.gd" type="Script" id=5]
+[ext_resource path="res://Levels/Storm/Storm.tscn" type="PackedScene" id=6]
 
 [node name="InfiniteLevelManager" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
+
+[node name="Storm" parent="Camera" instance=ExtResource( 6 )]
+position = Vector2( -192, -112 )
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 
