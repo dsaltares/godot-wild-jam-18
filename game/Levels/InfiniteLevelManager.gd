@@ -3,7 +3,7 @@ class_name InfiniteLevelManager
 
 signal done
 
-const PlayerScene = preload("res://Player/player.tscn")
+const PlayerSpawner = preload("res://Items/PlayerSpawner/PlayerSpawner.tscn")
 
 const LEVEL_WIDTH = 384
 
@@ -22,6 +22,9 @@ func _ready():
 	
 	# Add a second screen at the end
 	append_new_level()
+	
+func _process(delta: float) -> void:
+	_connect_player_signal()
 
 func load_random_level(height = null) -> Node2D:
 	randomize()
@@ -34,12 +37,11 @@ func load_random_level(height = null) -> Node2D:
 	return level
 	
 func spawn_player(level: Level):
-	var player = PlayerScene.instance()
+	var spawner = PlayerSpawner.instance()
 	var player_spawn = level.find_node(("PlayerSpawn"))
 	
-	player.position = player_spawn.position
-	player.connect("death", self, "_on_player_death")
-	add_child(player)
+	spawner.position = player_spawn.position
+	add_child(spawner)
 
 func append_new_level():
 	# Get an instance of a new random level
@@ -75,3 +77,9 @@ func _on_player_enter(level: Level):
 
 func _on_player_death() -> void:
 	emit_signal("done")
+
+func _connect_player_signal() -> void:
+	var players := get_tree().get_nodes_in_group("player")
+	for player in players:
+		if not player.is_connected("death", self, "_on_player_death"):
+			player.connect("death", self, "_on_player_death")
