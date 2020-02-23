@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Camera/Camera.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 114.863 )
 
 [node name="Camera" type="Camera2D"]
 position = Vector2( 192, 112 )
@@ -13,3 +16,9 @@ script = ExtResource( 1 )
 [node name="Frequency" type="Timer" parent="."]
 
 [node name="Duration" type="Timer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -200, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
