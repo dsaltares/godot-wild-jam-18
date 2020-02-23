@@ -68,6 +68,11 @@ func _update_vertical_velocity(delta: float) -> void:
 		velocity.y += GRAVITY * delta
 		
 func _update_horizontal_velocity(delta: float) -> void:
+	velocity.x = 0
+	
+	if state == State.Die:
+		return
+		
 	var moving = state == State.Walk
 	var space_ahead = not is_on_wall()
 	var attack_dash = dash_enabled and State.Attack
@@ -75,8 +80,6 @@ func _update_horizontal_velocity(delta: float) -> void:
 	if can_move:
 		var horizontal_speed = ATTACK_DASH_SPEED if state == State.Attack else WALK_SPEED
 		velocity.x = horizontal_speed * direction
-	else:
-		velocity.x = 0
 		
 func _update_player_detection() -> void:
 	if state != State.Walk:
