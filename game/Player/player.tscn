@@ -290,7 +290,7 @@ particles_anim_loop = false
 colors = PoolColorArray( 0.438993, 0.428171, 0.414754, 1, 0.673368, 0.673368, 0.673368, 1 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 12, 12 )
+extents = Vector2( 16.6274, 12 )
 
 [sub_resource type="CanvasItemMaterial" id=16]
 particles_animation = true
@@ -338,6 +338,7 @@ anims/damage = SubResource( 12 )
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 8
+frame = 2
 
 [node name="LandParticles" type="CPUParticles2D" parent="Pivot"]
 material = SubResource( 13 )
@@ -368,6 +369,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackArea"]
 position = Vector2( 8, 4 )
 shape = SubResource( 15 )
+disabled = true
 
 [node name="BloodParticles" type="CPUParticles2D" parent="Pivot"]
 material = SubResource( 16 )
