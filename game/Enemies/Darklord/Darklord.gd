@@ -145,7 +145,7 @@ func _update_direction() -> void:
 
 	
 func _update_damage_area() -> void:
-	if state == State.Die:
+	if state == State.Die or effect_player.current_animation == "damage":
 		return 
 		
 	var bodies = damage_area.get_overlapping_bodies()
