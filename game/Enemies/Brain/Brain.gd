@@ -19,7 +19,7 @@ onready var attack_area := $AttackArea
 onready var bullet_spawner := $Pivot/BulletSpawner
 onready var damage_area := $DamageArea
 
-var points = 1
+var points = 100
 var target : Player
 var state = State.Idle
 var has_line_of_sight := false

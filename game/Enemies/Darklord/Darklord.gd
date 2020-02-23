@@ -28,7 +28,8 @@ onready var damage_area := $DamageArea
 export var dash_enabled := false
 
 var health = 3
-var points = 5
+# The player gets points on every hit, so total score = health*points
+var points = 200 
 var state = State.Walk
 var direction := -1
 var velocity := Vector2.ZERO

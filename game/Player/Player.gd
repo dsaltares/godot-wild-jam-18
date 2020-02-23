@@ -21,7 +21,7 @@ const MAX_HEALTH = 5
 const MAX_AMMO = 26
 
 var health = MAX_HEALTH
-var ammo = 5
+var ammo = 10
 var taking_damage = false
 var score = 0
 

@@ -25,7 +25,7 @@ onready var damage_area := $DamageArea
 
 export var dash_enabled := false
 
-var points = 2
+var points = 200
 var state = State.Walk
 var direction := -1
 var velocity := Vector2.ZERO

@@ -60,7 +60,7 @@ func append_new_level():
 func _on_player_enter(level: Level):
 	var player := _find_player()
 	if player:
-		player.add_points(1)
+		player.add_points(100)
 	# If we are not going back to a previous screen
 	if level != current_level and level != previous_level:
 		# Destroy old levels
