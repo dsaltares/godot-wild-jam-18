@@ -10,10 +10,10 @@
 [ext_resource path="res://Enemies/Darklord/death.wav" type="AudioStream" id=8]
 [ext_resource path="res://Enemies/Darklord/attack.wav" type="AudioStream" id=9]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 16 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "damage"
 length = 1.5
 tracks/0/type = "value"
@@ -106,7 +106,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackArea"]
 position = Vector2( 12, -16 )
-shape = SubResource( 13 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -116,7 +116,7 @@ anims/idle = ExtResource( 5 )
 anims/walk = ExtResource( 6 )
 
 [node name="EffectPlayer" type="AnimationPlayer" parent="."]
-anims/damage = SubResource( 12 )
+anims/damage = SubResource( 2 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0

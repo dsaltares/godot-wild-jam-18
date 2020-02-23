@@ -35,7 +35,7 @@ var direction := -1
 var velocity := Vector2.ZERO
 
 func take_damage() -> bool:
-	if state == State.Die:
+	if state == State.Die or effect_player.current_animation == "damage":
 		return false
 	
 	if health == 1:
