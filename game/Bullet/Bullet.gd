@@ -12,6 +12,7 @@ export var SPEED := 350
 
 var direction := Vector2.RIGHT
 var state = State.Travel
+var shooter : Node
 
 onready var animation_player := $AnimationPlayer
 onready var sprite := $Sprite
@@ -40,3 +41,6 @@ func hit(node: Node = null) -> void:
 		node.take_damage()
 	state = State.Hit
 	animation_player.play("hit")
+	
+	if shooter and shooter.has_method("add_points"):
+		shooter.add_points(node.points)

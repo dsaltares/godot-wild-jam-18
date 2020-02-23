@@ -19,6 +19,7 @@ onready var attack_area := $AttackArea
 onready var bullet_spawner := $Pivot/BulletSpawner
 onready var damage_area := $DamageArea
 
+var points = 1
 var target : Player
 var state = State.Idle
 var has_line_of_sight := false
@@ -35,10 +36,14 @@ func _physics_process(delta: float) -> void:
 	_update_attack()
 	_update_damage_area()
 
-func take_damage() -> void:
+func take_damage() -> bool:
+	if state == State.Die:
+		return false
+		
 	emit_signal("shake_requested")
 	state = State.Die
 	animation_player.play("die")
+	return true
 
 func on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "die":
