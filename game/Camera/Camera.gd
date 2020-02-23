@@ -4,6 +4,7 @@ class_name GameCamera
 const TRANS := Tween.TRANS_SINE
 const EASE := Tween.EASE_IN_OUT
 
+var player
 var camera_dimensions: Vector2
 var amplitude := 0.0
 onready var shake_tween := $Shake
@@ -16,13 +17,8 @@ func _ready():
 	duration_timer.connect("timeout", self, "_on_Duration_timeout")
 
 func _process(delta):
-	var players = get_tree().get_nodes_in_group("player")
-	if players.size() == 0:
-		return
-		
-	var player = players[0]
-	if !player:
-		player = get_parent().find_node("Player", true, false)
+	if !is_instance_valid(player):
+		player = get_tree().get_root().find_node("Player", true, false)
 		return
 	
 	if player.position.x > position.x:

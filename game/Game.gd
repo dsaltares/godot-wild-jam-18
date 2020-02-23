@@ -31,6 +31,7 @@ func _on_DeathScreen_done() -> void:
 	
 func _on_GameScreen_done() -> void:
 	clear_game()
+	clear_player()
 	load_death()
 	
 func load_intro() -> void:
@@ -52,9 +53,15 @@ func load_game() -> void:
 	game.connect("done", self, "_on_GameScreen_done")
 	
 func clear_game() -> void:
-	if game:
+	if is_instance_valid(game):
 		game.queue_free()
 		game = null
+
+func clear_player() -> void:
+	var player = get_tree().get_root().find_node("Player", true, false)
+	
+	if is_instance_valid(player):
+		player.queue_free()
 	
 func load_death() -> void:
 	death = DeathScreen.instance()
