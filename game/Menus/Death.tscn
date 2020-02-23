@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menus/Death.gd" type="Script" id=1]
+[ext_resource path="res://Menus/you_are_dead.wav" type="AudioStream" id=2]
+[ext_resource path="res://Menus/press_key.wav" type="AudioStream" id=3]
 [ext_resource path="res://Menus/font_medium.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Menus/font_large.tres" type="DynamicFont" id=6]
 
@@ -118,4 +120,11 @@ __meta__ = {
 autoplay = "intro"
 anims/idle = SubResource( 1 )
 anims/intro = SubResource( 2 )
+
+[node name="YouAreDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = 3.319
+
+[node name="PressKey" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

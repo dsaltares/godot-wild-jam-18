@@ -21,7 +21,6 @@ func _ready() -> void:
 	load_intro()
 
 func _on_IntroScreen_done() -> void:
-	print("on_IntroScreen_done")
 	clear_intro()
 	call_deferred("load_game")
 	
@@ -35,7 +34,6 @@ func _on_GameScreen_done(final_score: int) -> void:
 	load_death(final_score)
 	
 func load_intro() -> void:
-	print("load_intro")
 	intro = IntroScreen.instance()
 	current_root.add_child(intro)
 	get_tree().set_current_scene(intro)

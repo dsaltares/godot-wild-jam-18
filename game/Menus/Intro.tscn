@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/font_medium.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menus/font_large.tres" type="DynamicFont" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Items/PlayerSpawner/spritesheet.png" type="Texture" id=9]
 [ext_resource path="res://Menus/Intro.gd" type="Script" id=10]
 [ext_resource path="res://Enemies/Darklord/spritesheet.png" type="Texture" id=11]
+[ext_resource path="res://Menus/press_key.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -299,4 +300,7 @@ anims/idle = SubResource( 3 )
 autoplay = "intro"
 anims/idle = SubResource( 4 )
 anims/intro = SubResource( 5 )
+
+[node name="PressKey" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

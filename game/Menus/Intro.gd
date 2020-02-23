@@ -8,6 +8,7 @@ onready var skull_anim := $GameScene/Skull/AnimationPlayer
 onready var darklord_anim := $GameScene/Darklord/AnimationPlayer
 
 onready var animation_player := $AnimationPlayer
+onready var key_sfx := $PressKey
 
 var skipped = false
 
@@ -22,8 +23,8 @@ func _input(event):
 	var is_skip_event = is_key or is_mouse
 	var is_anim_done = animation_player.current_animation == "idle"
 	if not skipped and is_skip_event and is_anim_done:
-		print("done")
 		emit_signal("done")
+		key_sfx.play()
 		skipped = true
 
 func _on_AnimationPlayer_animation_finished(name: String) -> void:
