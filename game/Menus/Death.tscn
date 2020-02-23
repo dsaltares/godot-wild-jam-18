@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "intro"
-length = 0.6
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("UI/Title:modulate")
 tracks/0/interp = 1
@@ -43,7 +43,19 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6 ),
+"times": PoolRealArray( 0, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/FinalScore:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -60,7 +72,6 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 184.0
 margin_right = 1280.0
 margin_bottom = 328.0
@@ -73,12 +84,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PressKey" type="Label" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
+[node name="FinalScore" type="Label" parent="UI"]
+margin_left = 33.0
 margin_top = 328.0
-margin_right = 1280.0
+margin_right = 1251.0
 margin_bottom = 472.0
 rect_scale = Vector2( 1.05167, 1.05167 )
+rect_pivot_offset = Vector2( 640, 80 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Final score: 0 points"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressKey" type="Label" parent="UI"]
+margin_top = 480.0
+margin_right = 1280.0
+margin_bottom = 624.0
 rect_pivot_offset = Vector2( 640, 80 )
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )

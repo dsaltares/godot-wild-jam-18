@@ -79,7 +79,11 @@ func _on_player_enter(level: Level):
 		call_deferred("append_new_level")
 
 func _on_player_death() -> void:
-	emit_signal("done")
+	var final_score = 0
+	var player := _find_player()
+	if player:
+		final_score = player.score
+	emit_signal("done", final_score)
 
 func _connect_player_signal() -> void:
 	var player := _find_player()

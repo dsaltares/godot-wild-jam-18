@@ -29,10 +29,10 @@ func _on_DeathScreen_done() -> void:
 	clear_death()
 	load_game()
 	
-func _on_GameScreen_done() -> void:
+func _on_GameScreen_done(final_score: int) -> void:
 	clear_game()
 	clear_player()
-	load_death()
+	load_death(final_score)
 	
 func load_intro() -> void:
 	print("load_intro")
@@ -63,8 +63,9 @@ func clear_player() -> void:
 	if is_instance_valid(player):
 		player.queue_free()
 	
-func load_death() -> void:
+func load_death(final_score: int) -> void:
 	death = DeathScreen.instance()
+	death.final_score = final_score
 	current_root.add_child(death)
 	get_tree().set_current_scene(death)
 	death.connect("done", self, "_on_DeathScreen_done")

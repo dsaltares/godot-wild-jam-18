@@ -4,8 +4,14 @@ class_name DeathScreen
 signal done
 
 onready var animation_player := $AnimationPlayer
+onready var final_score_label := $UI/FinalScore
 
 var skipped = false
+var final_score: int = 0
+
+func _ready() -> void:
+	var pluralized_points = "points" if final_score != 0 else "point"
+	final_score_label.text = "Final score: %s %s" % [final_score, pluralized_points]
 
 func _input(event):
 	var is_key = event is InputEventKey and event.is_pressed()
