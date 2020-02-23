@@ -14,6 +14,7 @@ var direction := 1
 var move_dir := 0
 var gravity := 0
 var velocity = Vector2.ZERO
+var can_jump = true
 
 func _ready():
 	yield(owner, "ready")
@@ -27,12 +28,17 @@ func unhandled_input(event: InputEvent) -> void:
 		_state_machine.transition_to("Move/Attack")
 
 func physics_process(delta: float) -> void:
+	_update_can_jump()
 	_update_move_dir()
 	_update_horizontal_velocity(delta)
 	_update_vertical_velocity(delta)
 	_update_look_dir() 
 	_update_footsteps()
 	_move(delta)
+
+func _update_can_jump() -> void:
+	if player.is_on_floor() and not can_jump:
+		can_jump = true
 
 func _update_move_dir() -> void:
 	move_dir = 0
@@ -69,10 +75,11 @@ func _update_vertical_velocity(delta):
 
 	var max_horizontal_speed = MAX_RUNNING_SPEED
 
-	if player.is_on_floor() and Input.is_action_just_pressed("jump"):
+	if can_jump and Input.is_action_just_pressed("jump"):
 		player.get_sfx("Jump").play()
 		var jump_speed = -2 * JUMP_HEIGHT * max_horizontal_speed / DISTANCE_TO_PEAK
 		velocity.y = jump_speed
+		can_jump = false
 	elif not player.is_on_floor():
 		var jump_section_distance = DISTANCE_TO_PEAK if velocity.y < -0.1 else DISTANCE_AFTER_PEAK
 		gravity = 2 * JUMP_HEIGHT * pow(max_horizontal_speed, 2) / pow(jump_section_distance, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Menus/font_medium.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menus/font_large.tres" type="DynamicFont" id=2]
@@ -13,6 +13,22 @@
 [ext_resource path="res://Enemies/Darklord/spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://Menus/press_key.wav" type="AudioStream" id=12]
 [ext_resource path="res://Menus/welcome_to_the_plague.wav" type="AudioStream" id=13]
+[ext_resource path="res://Menus/Buttons/PS4_Circle.png" type="Texture" id=14]
+[ext_resource path="res://Menus/Buttons/PS4_Cross.png" type="Texture" id=15]
+[ext_resource path="res://Menus/Buttons/PS4_Dpad.png" type="Texture" id=16]
+[ext_resource path="res://Menus/Buttons/PS4_Square.png" type="Texture" id=17]
+[ext_resource path="res://Menus/Buttons/PS4_Triangle.png" type="Texture" id=18]
+[ext_resource path="res://Menus/Buttons/XboxOne_B.png" type="Texture" id=19]
+[ext_resource path="res://Menus/Buttons/XboxOne_Dpad.png" type="Texture" id=20]
+[ext_resource path="res://Menus/Buttons/XboxOne_X.png" type="Texture" id=21]
+[ext_resource path="res://Menus/Buttons/XboxOne_Y.png" type="Texture" id=22]
+[ext_resource path="res://Menus/Buttons/XboxOne_A.png" type="Texture" id=23]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_Arrow_Left.png" type="Texture" id=24]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_Z.png" type="Texture" id=25]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_X.png" type="Texture" id=26]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_Shift.png" type="Texture" id=27]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_Arrow_Up.png" type="Texture" id=28]
+[ext_resource path="res://Menus/Buttons/Keyboard_Black_Arrow_Right.png" type="Texture" id=29]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -155,25 +171,13 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("UI/Controls:modulate")
+tracks/6/type = "method"
+tracks/6/path = NodePath("Welcome")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 1.6, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/7/type = "method"
-tracks/7/path = NodePath("Welcome")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -181,12 +185,24 @@ tracks/7/keys = {
 "method": "play"
 } ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("UI/Controls:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.6, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Intro" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="WildJamHead" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.156863 )
 position = Vector2( 248, 336 )
 scale = Vector2( 0.628448, 0.628448 )
 texture = ExtResource( 7 )
@@ -216,11 +232,10 @@ __meta__ = {
 margin_top = 328.0
 margin_right = 1280.0
 margin_bottom = 472.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 640, 80 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Press any key to play"
+text = "Press any button to play"
 align = 1
 valign = 1
 __meta__ = {
@@ -228,9 +243,9 @@ __meta__ = {
 }
 
 [node name="Credits" type="Label" parent="UI"]
-margin_top = 720.0
+margin_top = 672.0
 margin_right = 1280.0
-margin_bottom = 768.0
+margin_bottom = 720.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Developed by David Saltares and Jay Cano for Godot Wild Jam #18"
@@ -240,26 +255,121 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Controls" type="Label" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -8.0
-margin_top = 488.0
-margin_right = 1280.0
-margin_bottom = 536.0
+[node name="Controls" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Keyboard" type="Label" parent="UI/Controls"]
+margin_left = 610.771
+margin_top = 487.394
+margin_right = 1242.77
+margin_bottom = 604.394
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Arrows to move
-X to attack
-Z to shoot
-Shift to Dash"
-align = 1
+text = "to move
+to jump
+to attack
+to shoot
+to Dash"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Keys" type="Node2D" parent="UI/Controls/Keyboard"]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Shift" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -65, 426.763 )
+texture = ExtResource( 27 )
+
+[node name="Up" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -65, 138.885 )
+texture = ExtResource( 28 )
+
+[node name="Right" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -65, 41.363 )
+texture = ExtResource( 29 )
+
+[node name="Left" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -149.332, 41.363 )
+texture = ExtResource( 24 )
+
+[node name="Z" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -65, 330.466 )
+texture = ExtResource( 25 )
+
+[node name="X" type="Sprite" parent="UI/Controls/Keyboard/Keys"]
+position = Vector2( -65, 234.209 )
+texture = ExtResource( 26 )
+
+[node name="Gamepad" type="Label" parent="UI/Controls"]
+visible = false
+margin_left = 610.771
+margin_top = 487.394
+margin_right = 1242.77
+margin_bottom = 604.394
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "to move
+to jump
+to attack
+to shoot
+to Dash"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PS4" type="Node2D" parent="UI/Controls/Gamepad"]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+
+[node name="PS4_Triangle" type="Sprite" parent="UI/Controls/Gamepad/PS4"]
+position = Vector2( -65, 426.763 )
+texture = ExtResource( 18 )
+
+[node name="PS4_Cross" type="Sprite" parent="UI/Controls/Gamepad/PS4"]
+position = Vector2( -65, 138.885 )
+texture = ExtResource( 15 )
+
+[node name="PS4_Dpad" type="Sprite" parent="UI/Controls/Gamepad/PS4"]
+position = Vector2( -65, 41.363 )
+texture = ExtResource( 16 )
+
+[node name="PS4_Square" type="Sprite" parent="UI/Controls/Gamepad/PS4"]
+position = Vector2( -65, 330.466 )
+texture = ExtResource( 17 )
+
+[node name="PS4_Circle" type="Sprite" parent="UI/Controls/Gamepad/PS4"]
+position = Vector2( -65, 234.209 )
+texture = ExtResource( 14 )
+
+[node name="XBOX" type="Node2D" parent="UI/Controls/Gamepad"]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Xbox_Y" type="Sprite" parent="UI/Controls/Gamepad/XBOX"]
+position = Vector2( -65, 426.763 )
+texture = ExtResource( 22 )
+
+[node name="Xbox_A" type="Sprite" parent="UI/Controls/Gamepad/XBOX"]
+position = Vector2( -65, 138.885 )
+texture = ExtResource( 23 )
+
+[node name="Xbox_Dpad" type="Sprite" parent="UI/Controls/Gamepad/XBOX"]
+position = Vector2( -65, 41.363 )
+texture = ExtResource( 20 )
+
+[node name="Xbox_X" type="Sprite" parent="UI/Controls/Gamepad/XBOX"]
+position = Vector2( -65, 330.466 )
+texture = ExtResource( 21 )
+
+[node name="XBox_B" type="Sprite" parent="UI/Controls/Gamepad/XBOX"]
+position = Vector2( -65, 234.209 )
+texture = ExtResource( 19 )
+
 [node name="Wildcards" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1024, 72 )
 scale = Vector2( 0.1, 0.1 )
 

@@ -18,8 +18,9 @@ func _ready() -> void:
 
 func _input(event):
 	var is_key = event is InputEventKey and event.is_pressed()
+	var is_button = event is InputEventJoypadButton and event.is_pressed()
 	var is_mouse = event is InputEventMouseButton and event.is_pressed()
-	var is_skip_event = is_key or is_mouse
+	var is_skip_event = is_key or is_mouse or is_button
 	var is_anim_done = animation_player.current_animation == "idle"
 	if not skipped and is_skip_event and is_anim_done:
 		emit_signal('done')
