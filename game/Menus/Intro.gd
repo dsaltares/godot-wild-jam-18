@@ -25,11 +25,12 @@ func _ready() -> void:
 	if has_joypad:
 		keyboard_controls.visible = false
 		gamepad_controls.visible = true
-		var joypad_name = Input.get_joy_name(0).to_lower()
-		var is_dualshock = joypad_name.find("dualshock") != -1
-		if is_dualshock:
+		if is_dualshock():
 			ps4_buttons.visible = true
 			xbox_buttons.visible = false
+		else:
+			ps4_buttons.visible = false
+			xbox_buttons.visible = true
 	else:
 		keyboard_controls.visible = true
 		gamepad_controls.visible = false
@@ -48,3 +49,16 @@ func _input(event):
 func _on_AnimationPlayer_animation_finished(name: String) -> void:
 	if name == "intro":
 		animation_player.play("idle")
+
+func is_dualshock() -> bool:
+	var joypad_name = Input.get_joy_name(0).to_lower()
+	var names = [
+		"dualshock",
+		"ps4",
+		"sony",
+		"playstation"
+	]
+	for name in names:
+		if joypad_name.find(name) != -1:
+			return true
+	return false
