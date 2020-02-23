@@ -19,6 +19,10 @@ var LEVELS = {
 	"res://Levels/level4.tscn": {
 		"entrance_height": LEVEL_HEIGHT.LOW,
 		"exit_height": LEVEL_HEIGHT.LOW
+	},
+	"res://Levels/level5.tscn": {
+		"entrance_height": LEVEL_HEIGHT.HIGH,
+		"exit_height": LEVEL_HEIGHT.HIGH
 	}
 }
 
@@ -29,6 +33,7 @@ var LEVELS_BY_ENTRANCE_HEIGHT = {
 	],
 	LEVEL_HEIGHT.HIGH: [
 		"res://Levels/level1.tscn",
-		"res://Levels/level3.tscn"
+		"res://Levels/level3.tscn",
+		"res://Levels/level5.tscn"
 	]
 }

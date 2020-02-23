@@ -77,3 +77,8 @@ func _connect_to_shakers():
 
 func _on_shaker_shake_requested(duration := 0.2, amplitude := 5, frequency := 30) -> void:
 	_start_shake(duration, amplitude, frequency)
+
+
+func _on_DeathPit_body_entered(body):
+	if body.name == "Player":
+		get_parent().emit_signal("done", player.score)
