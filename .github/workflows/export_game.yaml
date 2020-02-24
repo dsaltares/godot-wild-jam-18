@@ -21,4 +21,4 @@ jobs:
         godot_template_version: 3.2.stable
         relative_project_path: ./game
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
