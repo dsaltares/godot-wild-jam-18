@@ -8,7 +8,7 @@ on:
 jobs:
   export_game:
     runs-on: ubuntu-latest
-    name: Export and publish game
+    name: Export game
     steps:
     - name: checkout
       uses: actions/checkout@v2.0.0
