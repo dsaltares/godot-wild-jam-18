@@ -1,0 +1,75 @@
+on:
+- release
+
+jobs:
+  release_windows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download widows
+        uses: wyozi/download-gh-release-asset@master
+        with:
+          args: plague-windows.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: release windows
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: windows
+          ITCH_GAME: plague
+          ITCH_USER: dsaltares
+          PACKAGE: plague-windows.zip
+
+  release_mac:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download mac
+        uses: wyozi/download-gh-release-asset@master
+        with:
+          args: plague-mac.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: release mac
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: mac
+          ITCH_GAME: plague
+          ITCH_USER: dsaltares
+          PACKAGE: plague-mac.zip
+
+  release_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download linux
+        uses: wyozi/download-gh-release-asset@master
+        with:
+          args: plague-linux.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: release linux
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: linux
+          ITCH_GAME: plague
+          ITCH_USER: dsaltares
+          PACKAGE: plague-linux.zip
+
+  release_html5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download html5
+        uses: wyozi/download-gh-release-asset@master
+        with:
+          args: plague-html5.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: release html5
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: plague
+          ITCH_USER: dsaltares
+          PACKAGE: plague-html5.zip
