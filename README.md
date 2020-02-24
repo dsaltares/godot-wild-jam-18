@@ -1,3 +1,5 @@
+![.github/workflows/export_game.yaml](https://github.com/dsaltares/godot-wild-jam-18/workflows/.github/workflows/export_game.yaml/badge.svg)
+
 ![plague](img/menu.png)
 
 # Plague
