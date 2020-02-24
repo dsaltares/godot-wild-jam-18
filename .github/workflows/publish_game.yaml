@@ -11,7 +11,7 @@ jobs:
         with:
           args: plague-windows.zip
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.EXPORT_GITHUB_TOKEN }}"
       - name: release windows
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
@@ -29,7 +29,7 @@ jobs:
         with:
           args: plague-mac.zip
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.EXPORT_GITHUB_TOKEN }}"
       - name: release mac
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
@@ -47,7 +47,7 @@ jobs:
         with:
           args: plague-linux.zip
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.EXPORT_GITHUB_TOKEN }}"
       - name: release linux
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
@@ -65,7 +65,7 @@ jobs:
         with:
           args: plague-html5.zip
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.EXPORT_GITHUB_TOKEN }}"
       - name: release html5
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
