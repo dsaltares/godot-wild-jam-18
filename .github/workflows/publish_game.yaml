@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download widows
-        uses: wyozi/download-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@master
         with:
-          args: plague-windows.zip
+          repo: dsalares/godot-wild-jam-18
+          file: plague-windows.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release windows
@@ -25,9 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download mac
-        uses: wyozi/download-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@master
         with:
-          args: plague-mac.zip
+          repo: dsalares/godot-wild-jam-18
+          file: plague-mac.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release mac
@@ -43,9 +45,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download linux
-        uses: wyozi/download-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@master
         with:
-          args: plague-linux.zip
+          repo: dsalares/godot-wild-jam-18
+          file: plague-linux.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release linux
@@ -61,9 +64,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download html5
-        uses: wyozi/download-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@master
         with:
-          args: plague-html5.zip
+          repo: dsalares/godot-wild-jam-18
+          file: plague-html5.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release html5
